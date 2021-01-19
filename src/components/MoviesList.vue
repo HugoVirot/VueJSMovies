@@ -1,7 +1,5 @@
 <template>
-  <div class="hello">
-    <h1 class="p-5">{{ msg }}</h1>
-
+  <div class="p-5">
     <section v-if="errored">
       <!--message d'erreur si échec-->
       <p class="text-danger">Echec de la requête. Veuillez réessayer.</p>
@@ -31,42 +29,13 @@
 
 <script>
 import Movie from "./Movie.vue";
-import axios from "axios";
 
 export default {
   name: "MoviesList",
   components: {
     Movie,
   },
-  props: {
-    msg: String,
-  },
-  data() {
-    return {
-      movies: [],
-      loading: true,
-      errored: false,
-    };
-  },
-  methods: {
-    getMovies(component) {
-      axios
-        .get(
-          "https://api.themoviedb.org/3/discover/movie/?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=popularity.desc&include_adult=false&include_video=false&page=1"
-        )
-        .then(function (response) {
-          component.loading = false;
-          component.movies = response.data.results;
-          console.log(component.movies);
-        })
-        .catch(function () {
-          component.errored = true;
-        });
-    },
-  },
-  created() {
-    this.getMovies(this)
-  }
+  props: ["movies", "loading", "errored"],
 };
 </script>
 
