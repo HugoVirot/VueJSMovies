@@ -1,17 +1,19 @@
 <template>
   <div id="app">
+
     <Header />
+
     <div v-if="$route.path == '/'">
         <h1 class="pt-5 font-weight-light">Vos films préférés sont sur VueJS Movies !</h1>
       <MoviesList :movies="movies" :loading="loading" :errored="errored" />
     </div>
 
     <div v-else>
-      <h1 class="p-5">{{ $route.path }}</h1>
       <router-view :key="$route.fullPath"></router-view>
     </div>
 
     <Footer />
+
   </div>
 </template>
 

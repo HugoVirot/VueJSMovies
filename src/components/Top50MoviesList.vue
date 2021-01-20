@@ -11,9 +11,10 @@
 
       <!--ensuite, affichage de la liste des films-->
       <div v-else>
-        <SortButtons :movies="movies"/>
-        <ul>
-          <li class="list-unstyled" v-for="movie in movies" :key="movie.id">
+        <SortButtons :movies="movies" />
+        <ol>
+          <li v-for="(movie, index) in movies" :key="movie.id">
+            <h3 class="pb-3 text-danger">#{{ index + 1 }}</h3>
             <Movie
               :original_title="movie.original_title"
               :poster_path="movie.poster_path"
@@ -22,7 +23,7 @@
               :overview="movie.overview"
             />
           </li>
-        </ul>
+        </ol>
       </div>
     </section>
   </div>
@@ -33,10 +34,10 @@ import Movie from "./Movie.vue";
 import SortButtons from "./SortButtons.vue";
 
 export default {
-  name: "MoviesList",
+  name: "Top50MoviesList",
   components: {
     Movie,
-    SortButtons
+    SortButtons,
   },
   props: ["movies", "loading", "errored"],
 };

@@ -1,5 +1,8 @@
 <template>
+<div>
+  <h1 class="pt-5 font-weight-light">Films français</h1>
   <MoviesList :movies="movies" :loading="loading" :errored="errored" />
+</div>
 </template>
 
 <script>
@@ -24,14 +27,14 @@ export default {
     getFrenchMovies(component) {
       axios
         .get(
-          "https://api.themoviedb.org/3/discover/movie/?api_key=3ea8988340d4ed715d28b9978346c29e&certification_country=FR&sort_by=popularity.desc&page=1"
+          "https://api.themoviedb.org/3/discover/movie/?api_key=3ea8988340d4ed715d28b9978346c29e&with_original_language=fr&page=1"
         )
         .then(function (response) {
           component.movies = response.data.results;
           console.log(component.movies);
           axios
             .get(
-              "https://api.themoviedb.org/3/discover/movie/?api_key=3ea8988340d4ed715d28b9978346c29e&certification_country=FR&sort_by=popularity.desc&page=2"
+              "https://api.themoviedb.org/3/discover/movie/?api_key=3ea8988340d4ed715d28b9978346c29e&with_original_language=fr&page=2"
             )
             .then(function (response) {
               component.loading = false;

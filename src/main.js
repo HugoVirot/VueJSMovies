@@ -6,6 +6,7 @@ import AmericanMovies from "./components/AmericanMovies.vue";
 import FrenchMovies from "./components/FrenchMovies.vue";
 import TopRatedMovies from "./components/TopRatedMovies.vue";
 import LastMovies from "./components/LastMovies.vue";
+import SearchMovies from "./components/SearchMovies.vue";
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,10 @@ const routes = [
   {
     path: '/LastMovies',
     component: LastMovies
+  },
+  {
+    path: '/SearchMovies',
+    component: SearchMovies
   }
 ]
 
