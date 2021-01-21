@@ -11,16 +11,19 @@
 
       <!--ensuite, affichage de la liste des films-->
       <div v-else>
-        <SortButtons :movies="movies"/>
+        <SortButtons :movies="movies" />
         <ul>
           <li class="list-unstyled" v-for="movie in movies" :key="movie.id">
+              <!-- <router-link id="link" :to="{name :'`/MovieDetails/${movie.id}`', params: { id: movie.id }}"> -->
             <Movie
+              :id="movie.id"
               :original_title="movie.original_title"
               :poster_path="movie.poster_path"
               :release_date="movie.release_date"
               :vote_average="movie.vote_average"
               :overview="movie.overview"
             />
+              <!-- </router-link> -->
           </li>
         </ul>
       </div>
@@ -36,7 +39,7 @@ export default {
   name: "MoviesList",
   components: {
     Movie,
-    SortButtons
+    SortButtons,
   },
   props: ["movies", "loading", "errored"],
 };

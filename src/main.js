@@ -7,8 +7,10 @@ import FrenchMovies from "./components/FrenchMovies.vue";
 import TopRatedMovies from "./components/TopRatedMovies.vue";
 import LastMovies from "./components/LastMovies.vue";
 import SearchMovies from "./components/SearchMovies.vue";
+import MovieDetails from "./components/MovieDetails.vue";
 
 Vue.use(VueRouter)
+Vue.use(require('vue-moment'));
 
 const routes = [
   {
@@ -30,6 +32,10 @@ const routes = [
   {
     path: '/SearchMovies',
     component: SearchMovies
+  },
+  {
+    path: '/MovieDetails/:id',
+    component: MovieDetails
   }
 ]
 
